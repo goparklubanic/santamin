@@ -109,7 +109,13 @@ include "koneksi.php";
 				$katas = explode(" ", $kalimat);
 				foreach ($katas as $i => $kata) {
 					if (strlen($kata) > 0) {
-						echo $kata . "\n";
+						// echo $kata . "\n";
+						$sql = "INSERT INTO tb_coba (tes) VALUES ('" . $kata . "')";
+						if ($koneksi->query($sql) === TRUE) {
+							echo "Data berhasil ditambahkan";
+						} else {
+							echo "Error: " . $sql . "<br>" . $koneksi->error;
+						}
 					} else {
 						continue;
 					}
@@ -122,12 +128,6 @@ include "koneksi.php";
 				// print_r($_POST);
 				// echo "<hr/>";
 				// var_dump($_POST['tes']);
-				$sql = "INSERT INTO tb_coba (tes) VALUES ('" . $_POST['tes'] . "')";
-				if ($koneksi->query($sql) === TRUE) {
-					echo "Data berhasil ditambahkan";
-				} else {
-					echo "Error: " . $sql . "<br>" . $koneksi->error;
-				}
 			}
 			?>
 		</table>
