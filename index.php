@@ -81,6 +81,44 @@ include "koneksi.php";
 
 			<?php
 			if (isset($_POST['submit'])) {
+				// ===== Skrip bersihkan teks =====
+
+				$tolak = [",", ".", "lu", "loe", "gw", "gue", "guwe", "\"", "'"];
+				$kalimat = $_POST['tes'];
+				echo "Kalimat Asli: "  . $kalimat . "\n";
+				$kalimatBersih = "";
+				foreach ($tolak as $i => $char) {
+					echo "Bersih dari " . $char . "\n";
+					$kalimat = str_replace($char, "", $kalimat);
+					echo $kalimat . "\n";
+					echo "\n";
+				}
+
+				#echo "=================== \n";
+				#echo "bersihkan dari spasi \n";
+				#$kalimat = str_replace(" ","",$kalimat);
+				#echo $kalimat . "\n";
+				#echo "===================\n";
+
+				echo $kalimat . "\n \n";
+
+				echo "================== \n";
+				echo "Kata-kata diterima \n";
+				echo "================== \n";
+
+				$katas = explode(" ", $kalimat);
+				foreach ($katas as $i => $kata) {
+					if (strlen($kata) > 0) {
+						echo $kata . "\n";
+					} else {
+						continue;
+					}
+				}
+				echo "\n";
+
+
+				// ===== Skrip bersihkan teks =====
+
 				// print_r($_POST);
 				// echo "<hr/>";
 				// var_dump($_POST['tes']);
